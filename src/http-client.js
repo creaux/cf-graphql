@@ -54,8 +54,14 @@ function get (url, params, opts) {
 
 function checkStatus (res) {
   if (res.status >= 200 && res.status < 300) {
+    console.info('CF-GRAPHQL INFO | url:', res.url);
+    console.info('CF-GRAPHQL INFO | status:', res.status);
+    console.info('CF-GRAPHQL INFO | statusText:', res.statusText);
     return res;
   } else {
+    console.error('CF-GRAPHQL ERROR | url:', res.url);
+    console.error('CF-GRAPHQL ERROR | status:', res.status);
+    console.error('CF-GRAPHQL ERROR | statusText:', res.statusText);
     const err = new Error(res.statusText);
     err.response = res;
     throw err;
